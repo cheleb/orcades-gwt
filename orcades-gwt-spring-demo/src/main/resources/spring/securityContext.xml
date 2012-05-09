@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<import
+		resource="classpath:META-INF/net/orcades/gwt/spring/dispatch/security/gwt-spring-dispatch-secured.xml" />
+	
+	
+	<sec:http>
+	 <sec:intercept-url pattern="*.gwtrpc" filters="none"/>
+	 <sec:form-login />
+	</sec:http>
+	
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider >
+			<sec:user-service id="userDetailsService">
+				<sec:user password="guest" name="guest" authorities="ROLE_USER" />
+				<sec:user password="adm" name="adm" authorities="ROLE_USER,ROLE_ADMIN" />
+			</sec:user-service>
+
+		</sec:authentication-provider>
+
+
+	</sec:authentication-manager>
+
+	<!--
+		Should wait for aspect j https://jira.springsource.org/browse/SEC-1232
+	-->
+
+
+	<sec:global-method-security
+		secured-annotations="enabled"  />
+
+
+
+
+   
+
+
+
+
+	
+
+
+
+	<context:component-scan base-package="net.orcades.spring.gwt.security.server" />
+
+
+	<bean
+		class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
+<!---->
+<!---->
+<!--	<bean id="httpSessionContextIntegrationFilter"-->
+<!--		class="org.springframework.security.web.context.HttpSessionContextIntegrationFilter">-->
+<!--	</bean>-->
+<!---->
+<!--	<bean id="securityContextHolderAwareRequestFilter"-->
+<!--		class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter" />-->
+
+<!--	<bean id="filterInvocationInterceptor"-->
+<!--		class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">-->
+<!--		<property name="authenticationManager" ref="authenticationManager" />-->
+<!--		<property name="accessDecisionManager">-->
+<!--			<bean class="org.springframework.security.access.vote.AffirmativeBased">-->
+<!--				<property name="allowIfAllAbstainDecisions" value="false" />-->
+<!--				<property name="decisionVoters">-->
+<!--					<list>-->
+<!--						<bean class="org.springframework.security.access.vote.RoleVoter">-->
+<!--							<property name="rolePrefix" value=""></property>-->
+<!--						</bean>-->
+<!--						<bean class="org.springframework.security.access.vote.AuthenticatedVoter" />-->
+<!--					</list>-->
+<!--				</property>-->
+<!--			</bean>-->
+<!--		</property>-->
+<!--		<property name="securityMetadataSource" ></property>-->
+<!--		<property name="objectDefinitionSource" ref="objectDefinitionSource" />-->
+<!--	</bean>-->
+
+</beans>
