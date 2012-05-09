@@ -82,7 +82,7 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
@@ -111,6 +111,21 @@
 			<version>2.4</version>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+
+
 	</dependencies>
 
 </project>

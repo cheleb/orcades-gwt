@@ -7,7 +7,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-                http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+                http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
@@ -15,8 +15,8 @@
 		resource="classpath:META-INF/net/orcades/gwt/spring/dispatch/security/gwt-spring-dispatch-secured.xml" />
 	
 	
-	<sec:http>
-	 <sec:intercept-url pattern="*.gwtrpc" filters="none"/>
+	<sec:http pattern="*.gwtrpc">
+<!-- 	 <sec:intercept-url  pattern="*.gwtrpc" /> -->
 	 <sec:form-login />
 	</sec:http>
 	
