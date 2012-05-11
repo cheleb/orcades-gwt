@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>net.customware.gwt.dispatch</groupId>
 			<artifactId>gwt-dispatch</artifactId>
-			<version>1.0.0</version>
+			<version>${gwt-dispatch.version}</version>
 			<exclusions>
 
 				<exclusion>
@@ -79,7 +79,7 @@
 		<dependency>
 			<groupId>net.customware.gwt.presenter</groupId>
 			<artifactId>gwt-presenter</artifactId>
-			<version>1.0.0</version>
+			<version>${gwt-presenter.version}</version>
 			<exclusions>
 
 				<exclusion>

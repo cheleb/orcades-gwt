@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>Orcades LR GWT Spring</name>
-	<groupId>net.orcades.gwt</groupId>
-	<artifactId>orcades-gwt-spring</artifactId>
-	<version>1.1.0</version>
+	<name>Orcades LR GWT</name>
+	<groupId>net.orcades</groupId>
+	<artifactId>gwt</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<profiles>
@@ -24,14 +24,20 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gwt.version>2.4.0</gwt.version>
+                <gwt-dispatch.version>1.2.0</gwt-dispatch.version>
+                <gwt-presenter.version>1.1.1</gwt-presenter.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<spring.security.version>3.1.0.RELEASE</spring.security.version>
 	</properties>
 	<modules>
+		<module>orcades-gwt-ginmvp</module>
+<!--
 		<module>orcades-gwt-spring-handler</module>
 		<module>orcades-gwt-spring-dispatch</module>
 		<module>orcades-gwt-spring-dispatch-security</module>
 		<module>orcades-gwt-spring-demo</module>
+!-->
+                <module>archetype</module>
 	</modules>
 
 	<build>
