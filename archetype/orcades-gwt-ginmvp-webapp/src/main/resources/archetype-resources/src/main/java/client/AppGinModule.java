@@ -2,10 +2,10 @@ package ${package}.client;
 
 
 
-import ${package}.client.details.DetailsView;
+import ${package}.client.details.DetailsActivity;
 import ${package}.client.details.DetailsViewImpl;
 import ${package}.client.home.HomePlace;
-import ${package}.client.home.HomeView;
+import ${package}.client.home.HomeActivity;
 import ${package}.client.home.HomeViewImpl;
 
 import net.orcades.gwt.ginmvp.client.GinMvpModule;
@@ -24,8 +24,8 @@ public class AppGinModule extends AbstractGinModule {
 		// you should have one activity mapper for each display area.
 		bind(ActivityMapper.class).to(AppActivityMapper.class).in(Singleton.class);
 		
-		bind(HomeView.class).to(HomeViewImpl.class).in(Singleton.class);
-		bind(DetailsView.class).to(DetailsViewImpl.class).in(Singleton.class);
+		bind(HomeActivity.View.class).to(HomeViewImpl.class).in(Singleton.class);
+		bind(DetailsActivity.View.class).to(DetailsViewImpl.class).in(Singleton.class);
 		
 	}
 

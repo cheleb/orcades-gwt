@@ -1,5 +1,6 @@
 package ${package}.client.details;
 
+import ${package}.client.details.DetailsView.Presenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -9,7 +10,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class DetailsViewImpl extends Composite implements DetailsView {
+public class DetailsViewImpl extends Composite implements DetailsActivity.View {
 
 	private static DetailsViewImplUiBinder uiBinder = GWT
 			.create(DetailsViewImplUiBinder.class);
@@ -25,14 +26,15 @@ public class DetailsViewImpl extends Composite implements DetailsView {
 
 	@UiField
 	Button homeButton;
-	
+
 	@UiHandler("homeButton")
-	void handleHomeButtonClick(ClickEvent e){
+	void handleHomeButtonClick(ClickEvent e) {
 		presenter.goToHome();
 	}
-	
-	public void setPresenter(Presenter presenter){
+
+	@Override
+	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+
 	}
-	
 }
