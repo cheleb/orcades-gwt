@@ -1,6 +1,7 @@
 package net.orcades.gwt.ginmvp.client;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.core.client.GWT;
@@ -20,13 +21,14 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
  */
 public class ActivityAsyncProxy<T extends Activity> implements Activity {
 
-	private AsyncProvider<T> provider;
+	private AsyncProvider<T> asyncProvider;
+
 	private boolean canceled = false;
 	private T impl;
 
 	@Inject
 	public ActivityAsyncProxy(AsyncProvider<T> activityProvider) {
-		this.provider = activityProvider;
+		this.asyncProvider = activityProvider;
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class ActivityAsyncProxy<T extends Activity> implements Activity {
 		if (impl != null) {
 			impl.start(panel, eventBus);
 		} else {
-			provider.get(new AsyncCallback<T>() {
+			asyncProvider.get(new AsyncCallback<T>() {
 
 				@Override
 				public void onFailure(Throwable caught) {

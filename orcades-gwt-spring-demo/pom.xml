@@ -7,9 +7,9 @@
 	<description>Demo web application of orcades gwt spring integration.</description>
 
 	<parent>
-		<groupId>net.orcades.gwt</groupId>
-		<artifactId>orcades-gwt-spring</artifactId>
-		<version>1.1.0</version>
+		<groupId>net.orcades</groupId>
+		<version>1.0.0</version>
+		<artifactId>gwt</artifactId>
 	</parent>
 
 	<build>

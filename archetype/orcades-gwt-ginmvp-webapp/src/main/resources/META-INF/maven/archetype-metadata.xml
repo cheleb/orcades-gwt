@@ -33,6 +33,7 @@
 			<directory>src/main/resources</directory>
 			<includes>
 				<include>css/**/*.*</include>
+				<include>spring/**/*.*</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8" filtered="true" packaged="false">

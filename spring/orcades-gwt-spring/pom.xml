@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Orcades LR GWT Spring Handler</name>
+	<artifactId>orcades-gwt-spring</artifactId>
+
+	<parent>
+	   <groupId>net.orcades.gwt</groupId>
+	   <artifactId>spring</artifactId>
+	   <version>1.0.0</version>
+	</parent>
+	
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+		<dependency>
+			<groupId>net.orcades.gwt</groupId>
+			<artifactId>orcades-gwt-dispatch</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+	<groupId>net.orcades.gwt.spring</groupId>
+</project>

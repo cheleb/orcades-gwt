@@ -7,37 +7,25 @@
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
-	<profiles>
-		<profile>
-			<id>build</id>
-			<build>
-				<directory>/tmp/mygwtbuild/${project.groupId}/${project.artifactId}/target</directory>
-			</build>
-			<activation>
-			</activation>
-			<properties>
-				<buildDir>/tmp/mygwtbuild/${project.groupId}/${project.artifactId}</buildDir>
-			</properties>
-		</profile>
-	</profiles>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gwt.version>2.4.0</gwt.version>
-                <gwt-dispatch.version>1.2.0</gwt-dispatch.version>
-                <gwt-presenter.version>1.1.1</gwt-presenter.version>
+		<gwt-dispatch.version>1.2.0</gwt-dispatch.version>
+		<gwt-presenter.version>1.1.1</gwt-presenter.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<spring.security.version>3.1.0.RELEASE</spring.security.version>
 	</properties>
 	<modules>
 		<module>orcades-gwt-ginmvp</module>
-<!--
-		<module>orcades-gwt-spring-handler</module>
+<!-- 		<module>orcades-gwt-spring-handler</module> -->
 		<module>orcades-gwt-spring-dispatch</module>
-		<module>orcades-gwt-spring-dispatch-security</module>
-		<module>orcades-gwt-spring-demo</module>
-!-->
-                <module>archetype</module>
+<!-- 		<module>orcades-gwt-spring-dispatch-security</module> -->
+<!-- 		<module>orcades-gwt-spring-demo</module> -->
+		<module>archetype</module>
+		<module>spring</module>
+		<module>orcades-gwt-dispatch</module>
 	</modules>
 
 	<build>
@@ -45,7 +33,13 @@
 
 
 		<plugins>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -53,7 +47,7 @@
 					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
 					<source>1.6</source>
 					<target>1.6</target>
-                                        <encoding>UTF-8</encoding>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 

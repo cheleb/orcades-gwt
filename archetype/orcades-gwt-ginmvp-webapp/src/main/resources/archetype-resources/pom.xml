@@ -49,6 +49,7 @@
 							<goal>compile</goal>
 						</goals>
 						<configuration>
+							<rpcPattern>{0}.gwtrpc</rpcPattern>
 							<i18nConstantsBundles>
 								<!-- <i18nConstantsBundle>test.gwttest.client.SimpleConstants</i18nConstantsBundle> -->
 								<i18nConstantsBundle>${package}.client.message.SimpleConstants</i18nConstantsBundle>
@@ -130,6 +131,11 @@
 		<dependency>
 			<groupId>net.orcades.gwt</groupId>
 			<artifactId>orcades-gwt-ginmvp</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.orcades.gwt.spring</groupId>
+			<artifactId>orcades-gwt-spring</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>

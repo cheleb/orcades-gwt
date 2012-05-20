@@ -23,6 +23,12 @@ public class HomeViewImpl extends Composite implements HomeActivity.View {
 	@UiField
 	Button detailsButton;
 
+	@UiField
+	Button sayHeloButton;
+	
+	@UiField
+	Button heloActionButton;
+	
 	public HomeViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
@@ -32,6 +38,16 @@ public class HomeViewImpl extends Composite implements HomeActivity.View {
 		presenter.goToDetails();
 	}
 
+	@UiHandler("sayHeloButton")
+	void handleHeloButtonClick(ClickEvent e) {
+		presenter.sayHelo("world");
+	}
+	
+	@UiHandler("heloActionButton")
+	void handleHeloActionButtonClick(ClickEvent e) {
+		presenter.sendHeloAction("world");
+	}
+	
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
 	}

@@ -5,6 +5,8 @@
 		This is the HomeViewImpl
 		<div>
 			<g:Button ui:field="detailsButton">Details</g:Button>
+			<g:Button ui:field="sayHeloButton" text="helo">Details</g:Button>
 		</div>
+		<g:Button ui:field="heloActionButton">HeloAction</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

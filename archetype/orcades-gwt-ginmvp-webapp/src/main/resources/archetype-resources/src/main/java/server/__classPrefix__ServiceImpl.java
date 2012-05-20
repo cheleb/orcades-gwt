@@ -1,6 +1,6 @@
 package ${package}.server;
 
-import ${package}.client.${classPrefix}Service;
+import ${package}.shared.${classPrefix}Service;
 import ${package}.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

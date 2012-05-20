@@ -13,7 +13,6 @@ public class ApplicationStartEvent extends GwtEvent<ApplicationStartEventHandler
 
 	@Override
 	public Type<ApplicationStartEventHandler> getAssociatedType() {
-
 		return TYPE;
 	}
 

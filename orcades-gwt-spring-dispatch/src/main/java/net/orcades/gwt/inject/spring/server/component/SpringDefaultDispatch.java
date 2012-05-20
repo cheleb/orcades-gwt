@@ -16,10 +16,13 @@ import net.customware.gwt.dispatch.server.Dispatch;
 import net.customware.gwt.dispatch.server.ExecutionContext;
 import net.customware.gwt.dispatch.shared.Action;
 import net.customware.gwt.dispatch.shared.ActionException;
+import net.customware.gwt.dispatch.shared.DispatchException;
 import net.customware.gwt.dispatch.shared.Result;
 import net.customware.gwt.dispatch.shared.UnsupportedActionException;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +37,7 @@ public class SpringDefaultDispatch implements Dispatch {
 	/**
 	 * Log4 logger.
 	 */
-	private static final Logger LOGGER = Logger.getLogger(SpringDefaultDispatch.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpringDefaultDispatch.class);
 
 	/**
 	 * Execution context.
@@ -59,7 +62,12 @@ public class SpringDefaultDispatch implements Dispatch {
 
 		public <A extends Action<R>, R extends Result> R execute(A action,
 				boolean allowRollback) throws ActionException {
-			R result = dispatch.doExecute(action, this);
+			R result;
+			try {
+				result = dispatch.doExecute(action, this);
+			} catch (DispatchException e) {
+				throw new ActionException(e);
+			}
 			if (allowRollback)
 				actionResults.add(new ActionResult<A, R>(action, result));
 			return result;
@@ -106,11 +114,15 @@ public class SpringDefaultDispatch implements Dispatch {
 			ctx.rollback();
 			LOGGER.error("Error while executing: " + action.getClass().getName(), e);
 			throw e;
+		} catch (DispatchException e) {
+			ctx.rollback();
+			LOGGER.error("Error while executing: " + action.getClass().getName(), e);
+			throw new ActionException(e);
 		}
 	}
 
 	private <A extends Action<R>, R extends Result> R doExecute(A action,
-			ExecutionContext ctx) throws ActionException {
+			ExecutionContext ctx) throws DispatchException {
 		ActionHandler<A, R> handler = findHandler(action);
 		return handler.execute(action, ctx);
 	}
@@ -134,6 +146,10 @@ public class SpringDefaultDispatch implements Dispatch {
 	private <A extends Action<R>, R extends Result> void doRollback(A action,
 			R result, ExecutionContext ctx) throws ActionException {
 		ActionHandler<A, R> handler = findHandler(action);
-		handler.rollback(action, result, ctx);
+		try {
+			handler.rollback(action, result, ctx);
+		} catch (DispatchException e) {
+			throw new ActionException(e);
+		}
 	}
 }
